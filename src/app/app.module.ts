@@ -9,13 +9,17 @@ import { FrutaComponent } from './fruta/fruta.component';
 import { ListadoClaseComponent } from './listado-clase/listado-clase.component';
 import { FlujoInformacionComponent } from './flujo-informacion/flujo-informacion.component';
 import { from } from 'rxjs';
+import { HomeComponent } from './components/home/home.component';
+import { Page404Component } from './components/page404/page404.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FrutaComponent,
     ListadoClaseComponent,
-    FlujoInformacionComponent
+    FlujoInformacionComponent,
+    HomeComponent,
+    Page404Component
   ],
   imports: [
     BrowserModule,
