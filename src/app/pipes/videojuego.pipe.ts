@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Videojuego } from '../model/videojuego';
 
+
 @Pipe({
   name: 'alquilado'
 })

@@ -61,5 +61,34 @@
     </div>
   </div>
 
+  <hr>
+
+  <div class="row">
+    <div class="col">
+      <h4>Listado Personas</h4>
+      <ol>
+        <li *ngFor="let p of personas">{{p.nombre}} - {{p.sexo}}</li>
+      </ol>
+    </div>
+    <div class="col">
+      <h4>Listado Mujeres</h4>
+      <ol>
+        <li *ngFor="let p of personas | sexo:'Femenino'">{{p.nombre}} - {{p.sexo}}</li>
+      </ol>
+    </div>
+    <div class="col">
+      <h4>Listado Hombres</h4>
+      <ol>
+        <li *ngFor="let p of personas | sexo:'Masculino'">{{p.nombre}} - {{p.sexo}}</li>
+      </ol>
+    </div>
+    <div class="col">
+      <h4>Listado Indefinidos</h4>
+      <ol>
+        <li *ngFor="let p of personas | sexo:'Indefinido'">{{p.nombre}} - {{p.sexo}}</li>
+      </ol>
+    </div>
+  </div>
+
 </div>
 

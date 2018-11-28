@@ -14,6 +14,7 @@ import { Page404Component } from './components/page404/page404.component';
 import { VideojuegoDetalleComponent } from './components/videojuego-detalle/videojuego-detalle.component';
 import { PipeComponent } from './components/pipe/pipe.component';
 import { VideojuegoPipe } from './pipes/videojuego.pipe';
+import { PersonaPipe } from './pipes/persona.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { VideojuegoPipe } from './pipes/videojuego.pipe';
     Page404Component,
     VideojuegoDetalleComponent,
     PipeComponent,
-    VideojuegoPipe
+    VideojuegoPipe,
+    PersonaPipe
   ],
   imports: [
     BrowserModule,
