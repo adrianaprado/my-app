@@ -12,7 +12,7 @@ export class Videojuego {
         this._descripcion = 'Lorem Ipsum...';
         this._anyo = 1994;
         this._precio = 0;
-        this._alquilado = false;
+        this._alquilado = true;
     }
 
     get titulo(): string {

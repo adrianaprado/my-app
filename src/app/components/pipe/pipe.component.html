@@ -1,0 +1,65 @@
+<div class="container text-left mt-2">
+  <h2 class="text-center">Pipes</h2>
+  <p><a target="_blank" href="https://angular.io/guide/pipes">Documentación oficial</a></p>
+  <p><a target="_blank" href="https://angular.io/api?type=pipe">Documentación de API para Pipes</a></p>
+  <p>
+    En Angular 2 aparece un nuevo concepto llamado Pipes, los pipes en Angular 2 son lo mismo 
+    que los filtros en AngularJS, es decir, nos permiten alterar la forma en la que se van a 
+    visualizar los datos. Podemos usar los definidos por Angular o crear los nuestros
+    propios.
+  </p>
+
+  <hr>
+
+  <h3>Pipes de Angular</h3>
+  
+  <p><b>Uppercase: </b> {{"TodoEnMayusculas" | uppercase}}</p>
+  <p><b>Lowercase: </b> {{"TodoEnMinusculas" | lowercase}}</p>
+  <p><b>Fecha sin pipe: </b> {{fecha}}</p>
+  <p><b>Fecha con pipe: </b> {{fecha | date}}</p>
+  <p><b>Fecha con pipe y formato personalizado (MM/dd/yyyy): </b> {{fecha | date:"MM/dd/yyyy"}}</p>
+  <p><b>Numero pi sin pipe: </b> {{pi}}</p>
+  <p><b>Numero pi con pipe (redondeo): </b> {{pi | number:'1.2-2'}}</p>
+  <p><b>Numero pi con pipe y con idioma (en): </b> {{pi | number:'1.2-2':'en'}}</p>
+
+  <hr>
+
+  <h3>Pipes propios</h3>
+
+  <div class="row">
+    <div class="col">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/bDcD0Cqx6io" frameborder="0" 
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+      </iframe>
+    </div>
+    <div class="col">
+      <h3>Datos en crudo</h3>
+      <p><code>{{videojuegos | json}}</code></p>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col">
+      <h4>Listado Videojuegos</h4>
+      <ol>
+        <li *ngFor="let v of videojuegos">{{v.titulo}} - {{v.alquilado}}</li>
+      </ol>
+    </div>
+    <div class="col">
+      <h4>Listado Alquilados</h4>
+      <ol>
+        <li *ngFor="let v of videojuegos | alquilado:true">{{v.titulo}} - {{v.alquilado}}</li>
+      </ol>
+    </div>
+    <div class="col">
+      <h4>Listado Disponibles</h4>
+      <ol>
+        <li *ngFor="let v of videojuegos | alquilado:false">{{v.titulo}} - {{v.alquilado}}</li>
+      </ol>
+    </div>
+  </div>
+
+</div>
+
