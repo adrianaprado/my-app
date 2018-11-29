@@ -13,7 +13,7 @@
       <p *ngIf="fruta.oferta" class="card-text"><del class="text-muted">{{fruta.precio}}&euro;</del> 
         <span class="oferta text-danger font-weight-bold"> {{(fruta.precio - (fruta.precio * fruta.descuento) / 100) | number:'1.2-2'}}&euro;</span>
       </p>
-      <p *ngIf="!fruta.oferta" class="card-text">{{fruta.precio}}&euro;</p>
+      <p *ngIf="!fruta.oferta" class="oferta card-text font-weight-bold">{{fruta.precio}}&euro;</p>
       <p class="card-text">Colores: {{fruta.colores}}</p>
       <button (click)="comprar(event)" class="btn btn-block btn-outline-primary">Comprar</button>
      </div>

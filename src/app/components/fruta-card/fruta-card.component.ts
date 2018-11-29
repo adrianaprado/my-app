@@ -8,7 +8,20 @@ import { Fruta } from 'src/app/model/fruta';
 })
 export class FrutaCardComponent implements OnInit {
 
-  @Input() fruta: Fruta;
+  _fruta: Fruta;
+
+  @Input('_fruta') set fruta(value: Fruta) {
+    if (value) {
+      this._fruta = value;
+    } else {
+      console.debug('fruta undefined => new Fruta()');
+      this._fruta = new Fruta();
+    }
+  }
+
+  get fruta(): Fruta {
+    return this._fruta;
+  }
 
   constructor() {
     console.trace('Constructor FrutaCardComponent');
