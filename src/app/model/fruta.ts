@@ -4,6 +4,7 @@ export class Fruta {
     private _calorias: number;
     private _colores: string[];
     private _oferta: boolean;
+    private _imagen: string;
 
     constructor() {
         this._nombre = 'default';
@@ -11,6 +12,7 @@ export class Fruta {
         this._calorias = 0;
         this._colores = [];
         this._oferta = false;
+        this._imagen = '';
     }
 
     public get nombre(): string {
@@ -51,5 +53,13 @@ export class Fruta {
 
     public set oferta(value: boolean) {
         this._oferta = value;
+    }
+
+    public get imagen(): string {
+        return this._imagen;
+    }
+    
+    public set imagen(value: string) {
+        this._imagen = value;
     }
 }
