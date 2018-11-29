@@ -1,4 +1,4 @@
-<div class="text-left">
+<div class="text-left mt-2">
   <h2 class="text-center">Ejercicios de frutas</h2>
 
   <h3>Enunciado</h3>
@@ -9,6 +9,8 @@
     <li>Crear un array solo con los nombres (Array de strings)</li>
     <li>Conseguir array solo con las frutas en oferta</li>
     <li>Conseguir array solo con las frutas de color rojo</li>
+    <li>Conseguir la primera fruta en oferta</li>
+    <li>Conseguir la primera fruta en oferta y primera fruta en oferta color verde</li>
   </ol>
 
   <hr>
@@ -21,8 +23,17 @@
   <h5>2. Sacar por pantalla las frutas</h5>
   <div class="row">
     <div class="col" *ngFor="let fruta of frutas">
-      <div class="card" style="width: 18rem;">
-          
+      <div class="card">
+        <div class="row justify-content-around">
+          <div class="col col-5">
+            <span class="badge badge-secondary">{{fruta.precio}} &euro;</span>
+          </div>
+          <div class="col col-5 text-right">
+            <span class="badge badge-{{(fruta.oferta)?'success':''}}">
+              <b>{{(fruta.oferta)?'¡Oferta!':''}}</b>
+            </span>
+          </div>
+        </div>
         <img class="card-img-top" src="{{fruta.imagen}}" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">
@@ -52,10 +63,31 @@
   <hr>
 
   <h5>5. Conseguir array solo con las frutas en oferta</h5>
-  <p></p>
+  <ol>
+      <li *ngFor="let fruta of frutasOferta">
+        {{fruta.nombre}}
+      </li>
+    </ol>
 
   <hr>
 
   <h5>6. Conseguir array solo con las frutas de color rojo</h5>
+  <ol>
+    <li *ngFor="let fruta of frutasRojas">
+      {{fruta.nombre}}
+    </li>
+  </ol>
+
+  <hr>
+
+  <h5>7. Conseguir la primera fruta en oferta</h5>
+  <p>{{frutaOferta.nombre}}</p>
+
+  <hr>
+
+  <h5>8. Conseguir la primera fruta en oferta y primera fruta en oferta color verde</h5>
+  <p>{{frutaOfertaVerde.nombre}}</p>
+
+  <hr>
 
 </div>

@@ -10,6 +10,10 @@ export class EjercicioFrutasComponent implements OnInit {
   precioTotal: number;
   frutas: Fruta[];
   nombresFrutas: string[];
+  frutasOferta: Fruta[];
+  frutasRojas: Fruta[];
+  frutaOferta: Fruta;
+  frutaOfertaVerde: Fruta;
 
   constructor() {
     console.trace('Constructor EjercicioFrutasComponent');
@@ -23,6 +27,7 @@ export class EjercicioFrutasComponent implements OnInit {
   }
 
   loadArrayFrutas(): void {
+    console.trace('loadArrayFrutas de EjercicioFrutasComponent');
     this.frutas = [];
     let f: Fruta;
     f = new Fruta();
@@ -51,15 +56,23 @@ export class EjercicioFrutasComponent implements OnInit {
     f.imagen = 'http://libbys.es/wordpress/wp-content/uploads/2018/05/fresas.jpg';
     this.frutas.push(f);
 
-    this.frutas.forEach(el => {
+    /*this.frutas.forEach(el => {
       this.precioTotal = this.precioTotal + el.precio;
-    });
+    });*/
+
+    this.precioTotal = this.frutas.map(el => el.precio).reduce((c, p) => c + p);
+    this.nombresFrutas = this.frutas.map(el => el.nombre);
+    this.frutasOferta = this.frutas.filter(el => el.oferta);
+    this.frutasRojas = this.frutas.filter(el => el.colores.find(c => c === 'Rojo'));
+    this.frutaOferta = this.frutas.find(el => el.oferta === true);
+    this.frutaOfertaVerde = this.frutas.filter(el => el.colores.find(c => c === 'Verde')).find(el => el.oferta);
+    // this.frutaOfertaVerde = this.frutas.find( fr => fr.oferta && (fr.colores.find(color => color === 'Verde') === 'Verde'));
   }
 
   loadArrayNombresFrutas(): void {
-    this.nombresFrutas = [];
+    /*this.nombresFrutas = [];
     this.frutas.forEach(element => {
       this.nombresFrutas.push(element.nombre);
-    });
+    });*/
   }
 }
