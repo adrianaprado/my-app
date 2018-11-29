@@ -58,7 +58,7 @@ export class Fruta {
     public get imagen(): string {
         return this._imagen;
     }
-    
+
     public set imagen(value: string) {
         this._imagen = value;
     }
