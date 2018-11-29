@@ -4,6 +4,7 @@ export class Fruta {
     private _calorias: number;
     private _colores: string[];
     private _oferta: boolean;
+    private _descuento: number;
     private _imagen: string;
 
     constructor() {
@@ -12,6 +13,7 @@ export class Fruta {
         this._calorias = 0;
         this._colores = [];
         this._oferta = false;
+        this._descuento = 0;
         this._imagen = '';
     }
 
@@ -53,6 +55,14 @@ export class Fruta {
 
     public set oferta(value: boolean) {
         this._oferta = value;
+    }
+
+    public get descuento(): number {
+        return this._descuento;
+    }
+
+    public set descuento(value: number) {
+        this._descuento = value;
     }
 
     public get imagen(): string {
