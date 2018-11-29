@@ -9,7 +9,7 @@ export class Videojuego {
     constructor() {
         this._titulo = 'Sin título';
         this._imagen = 'assets/imgs/videogame_cover.png';
-        this._descripcion = 'Lorem Ipsum...';
+        this._descripcion = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
         this._anyo = 1994;
         this._precio = 0;
         this._alquilado = true;
@@ -27,6 +27,7 @@ export class Videojuego {
     public get imagen(): string {
         return this._imagen;
     }
+
     public set imagen(value: string) {
         this._imagen = value;
     }
@@ -34,6 +35,7 @@ export class Videojuego {
     public get descripcion(): string {
         return this._descripcion;
     }
+
     public set descripcion(value: string) {
         this._descripcion = value;
     }
@@ -41,6 +43,7 @@ export class Videojuego {
     public get anyo(): number {
         return this._anyo;
     }
+
     public set anyo(value: number) {
         this._anyo = value;
     }
@@ -48,6 +51,7 @@ export class Videojuego {
     public get precio(): number {
         return this._precio;
     }
+
     public set precio(value: number) {
         this._precio = value;
     }
@@ -55,6 +59,7 @@ export class Videojuego {
     public get alquilado(): boolean {
         return this._alquilado;
     }
+
     public set alquilado(value: boolean) {
         this._alquilado = value;
     }

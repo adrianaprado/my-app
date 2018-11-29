@@ -15,6 +15,8 @@ import { VideojuegoDetalleComponent } from './components/videojuego-detalle/vide
 import { PipeComponent } from './components/pipe/pipe.component';
 import { VideojuegoPipe } from './pipes/videojuego.pipe';
 import { PersonaPipe } from './pipes/persona.pipe';
+import { PersonaDetalleComponent } from './components/persona-detalle/persona-detalle.component';
+import { EjercicioFrutasComponent } from './components/ejercicio-frutas/ejercicio-frutas.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { PersonaPipe } from './pipes/persona.pipe';
     VideojuegoDetalleComponent,
     PipeComponent,
     VideojuegoPipe,
-    PersonaPipe
+    PersonaPipe,
+    PersonaDetalleComponent,
+    EjercicioFrutasComponent
   ],
   imports: [
     BrowserModule,

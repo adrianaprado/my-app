@@ -1,0 +1,46 @@
+<h2>Clase Persona</h2>
+
+<h3 class="text-left">Datos personas en crudo</h3>
+<div class="row">
+  <div class="col">{{personaVacia | json}}</div>
+  <div class="col">{{personaAdri | json}}</div>
+  <div class="col">{{personaAndrea | json}}</div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col">
+    <div class="card" style="width: 18rem;">
+      <div class="row">
+        <div class="col">
+          <span class="badge badge-secondary">{{videojuego.anyo}}</span>
+        </div>
+        <div class="col">
+          <span class="badge badge-{{(videojuego.alquilado)?'danger':'success'}}">
+            {{(videojuego.alquilado)?'Alquilado':'Disponible'}}
+          </span>
+        </div>
+      </div>
+        
+    <img class="card-img-top" src="{{videojuego.imagen}}" alt="Videogame default cover">
+    <div class="card-body">
+      <div class="row">
+        <div class="col col-8"><h5 class="card-title text-info">{{videojuego.titulo}}</h5></div>
+        <div class="col"><p class="card-text text-muted">{{videojuego.precio}} &euro;</p></div>
+      </div>
+      <div class="row">
+        <div class="col"><p class="card-text">{{videojuego.descripcion}}</p></div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="col">
+
+  </div>
+  <div class="col">
+  
+  </div>
+</div>
+  
+<hr>

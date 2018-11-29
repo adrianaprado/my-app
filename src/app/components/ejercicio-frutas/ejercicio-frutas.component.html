@@ -1,0 +1,40 @@
+<div class="text-left">
+  <h2 class="text-center">Ejercicios de frutas</h2>
+
+  <h3>Enunciado</h3>
+  <ol>
+    <li>Traducir json de frutas en un objeto</li>
+    <li>Sacar por pantalla las frutas</li>
+    <li>Guardar en una variable el precio total de todas las frutas</li>
+    <li>Crear un array solo con los nombres (Array de strings)</li>
+    <li>Conseguir array solo con las frutas en oferta</li>
+    <li>Conseguir array solo con las frutas de color rojo</li>
+  </ol>
+
+  <hr>
+
+  <h5>Traducir json de frutas en un objeto</h5>
+  <p>{{frutas | json}}</p>
+
+  <hr>
+
+  <h5>Sacar por pantalla las frutas</h5>
+  <p></p>
+
+  <hr>
+
+  <h5>Guardar en una variable el precio total de todas las frutas</h5>
+  <p><b>Precio total de las frutas: </b> {{precioTotal}} &euro;</p>
+
+  <hr>
+
+  <h5>Crear un array solo con los nombres (Array de strings)</h5>
+  <ol>
+    <li *ngFor="let fruta of nombresFrutas">
+      {{fruta}}
+    </li>
+  </ol>
+
+  <hr>
+
+</div>
