@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Fruta } from 'src/app/model/fruta';
 
 @Component({
@@ -7,6 +7,7 @@ import { Fruta } from 'src/app/model/fruta';
   styleUrls: ['./ejercicio-frutas.component.scss']
 })
 export class EjercicioFrutasComponent implements OnInit {
+
   precioTotal: number;
   frutas: Fruta[];
   nombresFrutas: string[];
