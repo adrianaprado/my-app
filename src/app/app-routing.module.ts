@@ -10,6 +10,7 @@ import { PipeComponent } from './components/pipe/pipe.component';
 import { PersonaDetalleComponent } from './components/persona-detalle/persona-detalle.component';
 import { EjercicioFrutasComponent } from './components/ejercicio-frutas/ejercicio-frutas.component';
 import { ComparadorComponent } from './components/comparador/comparador.component';
+import { TareaComponent } from './components/tarea/tarea.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'pipe', component: PipeComponent},
   {path: 'ejercicio-frutas', component: EjercicioFrutasComponent},
   {path: 'app-comparador', component: ComparadorComponent},
+  {path: 'tareas', component: TareaComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', component: Page404Component}
 ];

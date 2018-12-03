@@ -1,0 +1,49 @@
+<div class="text-left">
+  <h2 class="text-center mt-2">
+    Tareas de Angular
+  </h2>
+  <p>
+    Ejemplo de crear un <b> Provider  </b> o <b> Service </b> para realizar las operaciones de Crud 
+    contra un servicio <b>REST</b>.
+  </p>
+
+  <p><b>Json del array de tareas:</b> <code class="text-dark"> {{tareas | json}}</code></p>
+
+  <hr>
+
+<div class="row mb-2 justify-content-center">
+  <div class="col col-4">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-success">Todas</button>
+      <button type="button" class="btn btn-success">Pendientes</button>
+    </div>
+  </div>
+  <div class="col col-4">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Nombre tarea">
+      <div class="input-group-append">
+        <button class="btn btn-outline-primary" type="button" id="button-addon2">Crear nueva</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="row justify-content-center">
+  <div class="col col-8">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let t of tareas">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <input type="checkbox" value="{{t.id}}">
+            </div>
+          </div>
+          <input type="text" class="form-control" value="{{t.titulo}}">
+          <i (click)="borrar(t)" class="text-danger text-center ml-4 fas fa-trash-alt"></i>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</div>

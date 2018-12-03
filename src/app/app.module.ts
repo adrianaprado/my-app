@@ -1,8 +1,11 @@
+// Modulos de Angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {HttpClientModule} from '@angular/common/http';
 
+// Componentes
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/appcomponent/app.component';
 import { FrutaComponent } from './components/fruta/fruta.component';
@@ -19,6 +22,11 @@ import { PersonaDetalleComponent } from './components/persona-detalle/persona-de
 import { EjercicioFrutasComponent } from './components/ejercicio-frutas/ejercicio-frutas.component';
 import { FrutaCardComponent } from './components/fruta-card/fruta-card.component';
 import { ComparadorComponent } from './components/comparador/comparador.component';
+import { TareaComponent } from './components/tarea/tarea.component';
+
+// Providers o servicios
+import { FrutaService } from './providers/fruta.service';
+import { TareaService } from './providers/tarea.service';
 
 @NgModule({
   declarations: [
@@ -35,15 +43,20 @@ import { ComparadorComponent } from './components/comparador/comparador.componen
     PersonaDetalleComponent,
     EjercicioFrutasComponent,
     FrutaCardComponent,
-    ComparadorComponent
+    ComparadorComponent,
+    TareaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    MatGridListModule
+    MatGridListModule,
+    HttpClientModule // Peticiones http asincronas
   ],
-  providers: [],
+  providers: [
+    FrutaService,
+    TareaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
