@@ -6,6 +6,7 @@ export class Fruta {
     private _oferta: boolean;
     private _descuento: number;
     private _imagen: string;
+    private _cant: number;
 
     constructor() {
         this._nombre = 'default';
@@ -15,6 +16,7 @@ export class Fruta {
         this._oferta = false;
         this._descuento = 0;
         this._imagen = 'https://www.frutadelasarga.com/server/Portal_0008706/img/products/melocoton-de-cieza_1677407.jpg';
+        this._cant = 1;
     }
 
     public get nombre(): string {
@@ -71,5 +73,12 @@ export class Fruta {
 
     public set imagen(value: string) {
         this._imagen = value;
+    }
+
+    public get cant(): number {
+        return this._cant;
+    }
+    public set cant(value: number) {
+        this._cant = value;
     }
 }

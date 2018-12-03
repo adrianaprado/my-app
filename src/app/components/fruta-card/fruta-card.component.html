@@ -15,7 +15,7 @@
       </p>
       <p *ngIf="!fruta.oferta" class="oferta card-text font-weight-bold">{{fruta.precio}}&euro;</p>
       <p class="card-text">Colores: {{fruta.colores}}</p>
-      <button (click)="comprar(event)" class="btn btn-block btn-outline-primary">Comprar</button>
+      <button (click)="comprar()" class="btn btn-block btn-outline-primary">Comprar</button>
      </div>
 
      <div *ngIf="fruta2">
