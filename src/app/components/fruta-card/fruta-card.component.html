@@ -17,4 +17,10 @@
       <p class="card-text">Colores: {{fruta.colores}}</p>
       <button (click)="comprar(event)" class="btn btn-block btn-outline-primary">Comprar</button>
      </div>
+
+     <div *ngIf="fruta2">
+      <p >Precio: <span class="{{fruta.precio - fruta2.precio>0?'positivo':'negativo'}}">{{fruta.precio - fruta2.precio}}</span> &euro; </p>
+      <p >Calorías: <span class="{{fruta.calorias - fruta2.calorias>0?'negativo':'positivo'}}"> {{fruta.calorias - fruta2.calorias}} </span> Kcal</p>
+    </div>
   </div>
+

@@ -21,8 +21,7 @@
 
     .calorias{
         position: absolute;
-        background-color: green;
-        color: white;
+        color: green;
         font-size: 1.1em;
         border-radius: 40%;
         bottom: 0px;
@@ -37,4 +36,12 @@ img.card-img-top{
 
 .oferta{
     font-size: 1.5em;
+}
+
+.positivo{
+    color: green;
+}
+
+.negativo{
+    color:red
 }
