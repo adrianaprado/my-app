@@ -14,31 +14,33 @@
 <div class="row mb-2 justify-content-center">
   <div class="col col-4">
     <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-success">Todas</button>
-      <button type="button" class="btn btn-success">Pendientes</button>
+      <button type="button" (click)="filtrar(0)" class="btn btn-success" value="todas">Todas</button>
+      <button type="button" (click)="filtrar(1)" class="btn btn-success" value="pendientes">Pendientes</button>
     </div>
   </div>
+  
   <div class="col col-4">
     <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Nombre tarea">
+      <input type="text" [(ngModel)]="nueva" class="form-control" placeholder="Nombre tarea">
       <div class="input-group-append">
-        <button class="btn btn-outline-primary" type="button" id="button-addon2">Crear nueva</button>
+        <button (click)="nuevaTarea()" class="btn btn-outline-primary" type="button">Crear nueva</button>
       </div>
     </div>
   </div>
 </div>
   
-<div class="row justify-content-center">
+<div class="row justify-content-center mb-4">
   <div class="col col-8">
     <ul class="list-group">
-      <li class="list-group-item" *ngFor="let t of tareas">
+      <li class="list-group-item" *ngFor="let t of tareas | completas:todas">
         <div class="input-group">
           <div class="input-group-prepend">
             <div class="input-group-text">
-              <input type="checkbox" value="{{t.id}}">
+              <input (change)="terminar(t)" type="checkbox" value="{{t.id}}" checked="{{t.terminado ? 'checked':''}}">
             </div>
           </div>
-          <input type="text" class="form-control" value="{{t.titulo}}">
+          <span class="form-control" *ngIf="!t.terminado">{{t.titulo}}</span>
+          <span class="form-control" *ngIf="t.terminado"><del>{{t.titulo}}</del></span>
           <i (click)="borrar(t)" class="text-danger text-center ml-4 fas fa-trash-alt"></i>
         </div>
       </li>
