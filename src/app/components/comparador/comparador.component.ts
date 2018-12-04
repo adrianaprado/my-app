@@ -34,9 +34,9 @@ export class ComparadorComponent implements OnInit {
     this.frutaService.getAll().subscribe(data => {
       console.debug('Datos recibidos $%o', data);
       this.frutas = data.map(el => el);
+      this.f1 = this.frutas[0];
+      this.f2 = this.frutas[1];
     });
-    this.f1 = this.frutas[0];
-    this.f2 = this.frutas[1];
   }
 
   loadArrayFrutas(): void {
