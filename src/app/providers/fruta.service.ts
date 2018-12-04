@@ -23,6 +23,25 @@ export class FrutaService {
     return this.http.get(this.endpoint);
   }
 
+  add(fruta: Fruta): Observable<any> {
+    const body = {
+      'nombre': fruta.nombre,
+      'precio': fruta.precio,
+      'calorias': fruta.calorias,
+      'cant': fruta.cant,
+      'oferta': fruta.oferta,
+      'descuento': fruta.descuento,
+      'imagen': fruta.imagen,
+      'colores': fruta.colores
+    };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post(this.endpoint, body, httpOptions);
+  }
+
   /* TODO cambiar a llamada REST */
   private loadArrayFrutas(): void {
     console.trace('loadArrayFrutas de EjercicioFrutasComponent');
