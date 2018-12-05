@@ -12,9 +12,12 @@ export class FormularioComponent implements OnInit {
   simple: FormControl;
   formulario: FormGroup; // Formulario para agrupar inputs == FormControl
   // nombre: FormControl; // Control o input del formulario
+  urlPattern: string;
 
   constructor(public frutaService: FrutaService) {
     console.trace('FormularioComponent constructor');
+    /* Patron para que la url de imagen empiece por http(s) y acabe por jpg, png o jpeg */
+    this.urlPattern = '^(http(s?)):\/\/.+\.(jpg|png|jpeg)$';
 
     // Control unico
     this.simple = new FormControl('');
@@ -33,15 +36,42 @@ export class FormularioComponent implements OnInit {
         0, // Con valor inicial
         [ // Validaciones
           Validators.required,
-          Validators.minLength(0.01),
-          Validators.maxLength(9999)
+          Validators.min(0.1),
+          Validators.max(9999)
         ]),
-        calorias: new FormControl(0),
-        cantidad: new FormControl(1),
-        colores: new FormControl(),
-        oferta: new FormControl(false),
-        descuento: new FormControl(0),
-        imagen: new FormControl('')
+      calorias: new FormControl(
+          0,
+          [
+            Validators.required,
+            Validators.min(10),
+            Validators.max(99999)
+          ]),
+      cantidad: new FormControl(
+          1,
+          [
+            Validators.required,
+            Validators.min(1),
+            Validators.max(99)
+          ]),
+      colores: new FormControl(),
+      oferta: new FormControl(
+        false,
+        [
+          Validators.required
+        ]),
+      descuento: new FormControl(
+        5,
+        [
+          Validators.required,
+          Validators.min(5),
+          Validators.max(90)
+        ]),
+      imagen: new FormControl(
+        'https://picsum.photos/200/300/?random',
+        [
+          Validators.required,
+          Validators.pattern(this.urlPattern)
+        ])
     });
   }
 
@@ -70,6 +100,7 @@ export class FormularioComponent implements OnInit {
     fruta.descuento = this.formulario.controls.descuento.value;
     fruta.imagen = this.formulario.controls.imagen.value;
     fruta.oferta = this.formulario.controls.oferta.value;
+    // fruta.colores = this.formulario.controls.oferta.value;
 
     console.debug('Llamar servicio pasando la fruta %o', fruta);
 
@@ -82,6 +113,7 @@ export class FormularioComponent implements OnInit {
       this.formulario.controls.oferta.setValue(false);
       this.formulario.controls.descuento.setValue(0);
       this.formulario.controls.calorias.setValue('');
+      this.formulario.controls.colores.setValue([]);
     });
   }
 

@@ -44,7 +44,7 @@
           <input name="precio" class="form-control" type="number" step="0.5" formControlName="precio">
           <small class="form-text text-danger" 
           *ngIf="formulario.controls.precio.invalid && formulario.controls.precio.touched">
-            *Precio tiene que estar entre 0.01 y 9999 &euro;
+            *Precio tiene que estar entre 0.1 y 9999 &euro;
           </small>
           <small class="form-text text-success" *ngIf="formulario.controls.precio.valid">
             Precio válido
@@ -58,29 +58,26 @@
         <div class="form-group">
           <label for="calorias" class="col-form-label">Calorías:</label>
           <input name="calorias" type="number" step="1" class="form-control" formControlName="calorias">
+          <small class="form-text text-danger" 
+          *ngIf="formulario.controls.calorias.invalid && formulario.controls.calorias.touched">
+            *Mínimo 10 Kcal y máximo 99999.
+          </small>
+          <small class="form-text text-success" *ngIf="formulario.controls.calorias.valid">
+            Calorias válidas
+          </small>
         </div>
       </div>
       <div class="col">
         <div class="form-group">
           <label for="cantidad" class="col-form-label">Cantidad:</label>
           <input name="cantidad" type="number" step="1" class="form-control" formControlName="cantidad">
-        </div>
-      </div>
-    </div>
-
-    <div class="row align-items-center">
-      <div class="col">
-        <div class="form-check">
-          <input name="oferta" class="form-check-input" type="checkbox" value="" formControlName="oferta">
-          <label class="form-check-label" for="oferta">
-            En oferta
-          </label>
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label for="descuento" class="col-form-label">Descuento:</label>
-          <input name="descuento" type="number" step="10" class="form-control" formControlName="descuento">
+          <small class="form-text text-danger" 
+          *ngIf="formulario.controls.cantidad.invalid && formulario.controls.cantidad.touched">
+            *Mínimo 1 y máximo 99.
+          </small>
+          <small class="form-text text-success" *ngIf="formulario.controls.cantidad.valid">
+            Cantidad válida
+          </small>
         </div>
       </div>
     </div>
@@ -90,8 +87,46 @@
         <div class="form-group">
           <label for="imagen" class="col-form-label">Imagen:</label>
           <input name="imagen" type="text" class="form-control" formControlName="imagen">
+          <small class="form-text text-danger" 
+          *ngIf="formulario.controls.imagen.invalid && formulario.controls.imagen.touched">
+            *No es una url válida.
+          </small>
+          <small class="form-text text-success" *ngIf="formulario.controls.imagen.valid">
+            Imagen válida
+          </small>
+          
         </div>
       </div>
+      <div class="col">
+        <img class="" style="width:100px" src="{{formulario.controls.imagen.value}}" alt="imagen destacada">
+      </div>
+    </div>
+
+    <div class="row align-items-center">
+      <div class="col col-6">
+        <div class="form-check">
+          <input name="oferta" class="form-check-input" type="checkbox" value="" formControlName="oferta">
+          <label class="form-check-label" for="oferta">
+            En oferta
+          </label>
+        </div>
+      </div>
+      <div class="col col-6">
+        <div class="form-group" [hidden]="!formulario.controls.oferta.value">
+          <label for="descuento" class="col-form-label">Descuento:</label>
+          <input name="descuento" type="number" step="5" class="form-control" formControlName="descuento">
+          <small class="form-text text-danger" 
+          *ngIf="formulario.controls.descuento.invalid && formulario.controls.descuento.touched">
+            *Mínimo 5 y máximo 90.
+          </small>
+          <small class="form-text text-success" *ngIf="formulario.controls.descuento.valid">
+            Descuento válido
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="col">
         <div class="form-group">
           <label for="colores" class="col-form-label">Colores:</label>
