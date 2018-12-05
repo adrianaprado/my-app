@@ -76,6 +76,21 @@
       "descuento": 15,
       "imagen": "http://libbys.es/wordpress/wp-content/uploads/2018/05/fresas.jpg",
       "cant": 1
+    },
+    {
+      "nombre": "melocoton",
+      "precio": 22,
+      "calorias": 22,
+      "cant": 1,
+      "oferta": false,
+      "descuento": 0,
+      "imagen": "https://www.frutadelasarga.com/server/Portal_0008706/img/products/melocoton-de-cieza_1677407.jpg",
+      "colores": [
+        {
+          "color": "Verde"
+        }
+      ],
+      "id": 4
     }
   ]
 }

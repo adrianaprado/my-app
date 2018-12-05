@@ -11,12 +11,12 @@ export class Fruta {
 
     constructor() {
         this._id = -1;
-        this._nombre = 'default';
+        this._nombre = '';
         this._precio = 0;
         this._calorias = 0;
         this._colores = [];
         this._oferta = false;
-        this._descuento = 0;
+        this._descuento = 5;
         this._imagen = 'https://www.frutadelasarga.com/server/Portal_0008706/img/products/melocoton-de-cieza_1677407.jpg';
         this._cant = 1;
     }

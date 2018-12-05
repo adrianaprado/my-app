@@ -23,7 +23,14 @@ export class FrutaService {
     return this.http.get(this.endpoint);
   }
 
+  getById(id: number): Observable<any> {
+    console.trace('FrutaService getById');
+    const uri = this.endpoint + '/' + id;
+    return this.http.get(uri);
+  }
+
   add(fruta: Fruta): Observable<any> {
+    console.trace('FrutaService add');
     let descuento;
 
     if (!fruta.oferta) {
@@ -48,6 +55,43 @@ export class FrutaService {
       })
     };
     return this.http.post(this.endpoint, body, httpOptions);
+  }
+
+  update(fruta: Fruta): Observable<any> {
+    console.trace('FrutaService update');
+    const uri = this.endpoint + '/' + fruta.id;
+    let descuento;
+
+    if (!fruta.oferta) {
+      descuento = 0;
+    } else {
+      descuento = fruta.descuento;
+    }
+
+    const body = {
+      'nombre': fruta.nombre,
+      'precio': fruta.precio,
+      'calorias': fruta.calorias,
+      'cant': fruta.cant,
+      'oferta': fruta.oferta,
+      'descuento': descuento,
+      'imagen': fruta.imagen,
+      'colores': fruta.colores
+    };
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.patch(uri, body, httpOptions);
+  }
+
+  delete(id: number): Observable<any> {
+    console.trace('FrutaService delete');
+    const uri = this.endpoint + '/' + id;
+    return this.http.delete(uri);
   }
 
   /* TODO cambiar a llamada REST */
