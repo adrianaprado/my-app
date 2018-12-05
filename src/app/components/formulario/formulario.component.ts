@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Fruta } from 'src/app/model/fruta';
 import { FrutaService } from 'src/app/providers/fruta.service';
 
@@ -12,6 +12,7 @@ export class FormularioComponent implements OnInit {
   simple: FormControl;
   formulario: FormGroup; // Formulario para agrupar inputs == FormControl
   // nombre: FormControl; // Control o input del formulario
+  colores: FormArray; // Array de FormControls
   urlPattern: string;
 
   constructor(public frutaService: FrutaService) {
@@ -43,7 +44,7 @@ export class FormularioComponent implements OnInit {
           0,
           [
             Validators.required,
-            Validators.min(10),
+            Validators.min(5),
             Validators.max(99999)
           ]),
       cantidad: new FormControl(
@@ -53,7 +54,6 @@ export class FormularioComponent implements OnInit {
             Validators.min(1),
             Validators.max(99)
           ]),
-      colores: new FormControl(),
       oferta: new FormControl(
         false,
         [
@@ -71,12 +71,43 @@ export class FormularioComponent implements OnInit {
         [
           Validators.required,
           Validators.pattern(this.urlPattern)
-        ])
+        ]),
+        colores: new FormArray([this.crearColorFormGroup()],
+          Validators.minLength(1))
     });
+
+    // this.colores = this.formulario.get('colores') as FormArray;
   }
 
   ngOnInit() {
     console.trace('FormularioComponent ngOnInit');
+  }
+
+  crearColorFormGroup(): FormGroup {
+    console.trace('FormularioComponent crearColorFormGroup');
+    return new FormGroup({
+      color: new FormControl(
+        'Verde',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(15)
+        ])
+    });
+  }
+
+  nuevoColor() {
+    console.trace('FormularioComponent nuevoColor');
+    const arrayColores = this.formulario.get('colores') as FormArray;
+    arrayColores.push(this.crearColorFormGroup());
+  }
+
+  eliminarColor(index: number) {
+    console.trace('FormularioComponent eliminarColor');
+    const arrayColores = this.formulario.get('colores') as FormArray;
+    if (arrayColores.length > 1) {
+      arrayColores.removeAt(index);
+    }
   }
 
   cargarFormulario() {
@@ -100,7 +131,7 @@ export class FormularioComponent implements OnInit {
     fruta.descuento = this.formulario.controls.descuento.value;
     fruta.imagen = this.formulario.controls.imagen.value;
     fruta.oferta = this.formulario.controls.oferta.value;
-    // fruta.colores = this.formulario.controls.oferta.value;
+    fruta.colores = this.formulario.controls.colores.value;
 
     console.debug('Llamar servicio pasando la fruta %o', fruta);
 
@@ -112,8 +143,8 @@ export class FormularioComponent implements OnInit {
       this.formulario.controls.cantidad.setValue(1);
       this.formulario.controls.oferta.setValue(false);
       this.formulario.controls.descuento.setValue(0);
-      this.formulario.controls.calorias.setValue('');
-      this.formulario.controls.colores.setValue([]);
+      this.formulario.controls.imagen.setValue('');
+      this.formulario.controls.colores.setValue([{color: ''}]);
     });
   }
 

@@ -24,13 +24,21 @@ export class FrutaService {
   }
 
   add(fruta: Fruta): Observable<any> {
+    let descuento;
+
+    if (!fruta.oferta) {
+      descuento = 0;
+    } else {
+      descuento = fruta.descuento;
+    }
+
     const body = {
       'nombre': fruta.nombre,
       'precio': fruta.precio,
       'calorias': fruta.calorias,
       'cant': fruta.cant,
       'oferta': fruta.oferta,
-      'descuento': fruta.descuento,
+      'descuento': descuento,
       'imagen': fruta.imagen,
       'colores': fruta.colores
     };
