@@ -106,16 +106,6 @@ export class CrudFrutasDetalleComponent implements OnInit {
     const arrayColores = new FormArray([]) as FormArray;
 
     this.frutaDetalle.colores.forEach(c => {
-      /*const colorGroup = new FormGroup({
-        color: new FormControl(
-          c,
-          [
-            Validators.required,
-            Validators.minLength(2),
-            Validators.maxLength(15)
-          ])
-      });*/
-      // this.nuevoColor(c);
       arrayColores.push(this.crearColorFormGroup(c));
     });
 
