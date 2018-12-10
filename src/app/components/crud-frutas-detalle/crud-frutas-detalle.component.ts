@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { FrutaService } from 'src/app/providers/fruta.service';
 import { Fruta } from 'src/app/model/fruta';
@@ -16,8 +16,11 @@ export class CrudFrutasDetalleComponent implements OnInit {
   colores: FormArray;
   urlPattern: string;
 
-  constructor(private route: ActivatedRoute, public frutaService: FrutaService) {
+  mensaje: string;
+
+  constructor(private route: ActivatedRoute, public frutaService: FrutaService, private router: Router) {
     console.trace('CrudFrutasDetalleComponent constructor');
+    this.mensaje = '';
     this.id = 0;
     /* Patron para que la url de imagen empiece por http(s) y acabe por jpg, png o jpeg */
     this.urlPattern = '^(http(s?)):\/\/.+\.(jpg|png|jpeg)$';
@@ -69,8 +72,8 @@ export class CrudFrutasDetalleComponent implements OnInit {
           Validators.required,
           Validators.pattern(this.urlPattern)
         ]),
-        colores: new FormArray([this.crearColorFormGroup()],
-          Validators.minLength(1))
+      colores: new FormArray([this.crearColorFormGroup('')],
+        Validators.minLength(1))
     });
 
     console.trace('Formulario %o', this.formulario);
@@ -103,7 +106,7 @@ export class CrudFrutasDetalleComponent implements OnInit {
     const arrayColores = new FormArray([]) as FormArray;
 
     this.frutaDetalle.colores.forEach(c => {
-      const colorGroup = new FormGroup({
+      /*const colorGroup = new FormGroup({
         color: new FormControl(
           c,
           [
@@ -111,18 +114,19 @@ export class CrudFrutasDetalleComponent implements OnInit {
             Validators.minLength(2),
             Validators.maxLength(15)
           ])
-      });
-      arrayColores.push(colorGroup);
+      });*/
+      // this.nuevoColor(c);
+      arrayColores.push(this.crearColorFormGroup(c));
     });
 
     this.formulario.setControl('colores' , arrayColores);
   }
 
-  crearColorFormGroup(): FormGroup {
+  crearColorFormGroup(nombre: string): FormGroup {
     console.trace('CrudFrutasDetalleComponent crearColorFormGroup');
     return new FormGroup({
       color: new FormControl(
-        'Verde',
+        nombre,
         [
           Validators.required,
           Validators.minLength(2),
@@ -131,10 +135,10 @@ export class CrudFrutasDetalleComponent implements OnInit {
     });
   }
 
-  nuevoColor() {
+  nuevoColor(nombre: string) {
     console.trace('CrudFrutasDetalleComponent nuevoColor');
     const arrayColores = this.formulario.get('colores') as FormArray;
-    arrayColores.push(this.crearColorFormGroup());
+    arrayColores.push(this.crearColorFormGroup(nombre));
   }
 
   enviarFruta(id: number) {
@@ -147,9 +151,11 @@ export class CrudFrutasDetalleComponent implements OnInit {
     fruta.descuento = this.formulario.controls.descuento.value;
     fruta.imagen = this.formulario.controls.imagen.value;
     fruta.oferta = this.formulario.controls.oferta.value;
-    fruta.colores = this.formulario.controls.colores.value;
 
-    console.debug('Llamar servicio pasando la fruta %o', fruta);
+    this.formulario.get('colores').controls.forEach(color => {
+      const colorFormControl = color.controls.color.value;
+      fruta.colores.push(colorFormControl);
+    });
 
     /** Si es menor que 0 se esta creando una fruta nueva */
     if (id < 0) {
@@ -160,13 +166,19 @@ export class CrudFrutasDetalleComponent implements OnInit {
         this.formulario.controls.calorias.setValue(0);
         this.formulario.controls.cantidad.setValue(1);
         this.formulario.controls.oferta.setValue(false);
-        this.formulario.controls.descuento.setValue(0);
+        this.formulario.controls.descuento.setValue(10);
         this.formulario.controls.imagen.setValue('');
         this.formulario.controls.colores.setValue([{color: ''}]);
+        this.router.navigate(['crud-frutas']);
+        this.mensaje = 'Fruta modificada correctamente';
       });
     /** Si id > 0 la fruta existe y se esta actualizando */
     } else {
-
+      fruta.id = id;
+      this.frutaService.update(fruta).subscribe(data => {
+        console.debug(data);
+        this.mensaje = 'Fruta modificada correctamente';
+      });
     }
   }
 }

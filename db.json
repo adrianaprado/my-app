@@ -78,17 +78,16 @@
       "cant": 1
     },
     {
-      "nombre": "melocoton",
-      "precio": 22,
-      "calorias": 22,
+      "nombre": "Melocoton",
+      "precio": 0.25,
+      "calorias": 15,
       "cant": 1,
       "oferta": false,
-      "descuento": 0,
+      "descuento": 5,
       "imagen": "https://www.frutadelasarga.com/server/Portal_0008706/img/products/melocoton-de-cieza_1677407.jpg",
       "colores": [
-        {
-          "color": "Verde"
-        }
+        "Naranja",
+        "Verde"
       ],
       "id": 4
     }
