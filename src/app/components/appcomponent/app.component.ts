@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LoginService } from 'src/app/providers/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +10,21 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Angular';
   autor = 'Adriana';
+
+  constructor(private loginService: LoginService, private router: Router) {
+    console.trace('AppComponent constructor');
+  }
+
+  logout() {
+    console.trace('BackofficeComponent logout');
+    this.loginService.logout();
+    this.router.navigate(['login']);
+  }
+
+  logueado() {
+    if (!this.loginService.isLogged()) {
+      return false;
+    }
+    return true;
+  }
 }

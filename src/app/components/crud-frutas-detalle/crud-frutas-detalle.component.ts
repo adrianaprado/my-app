@@ -137,8 +137,8 @@ export class CrudFrutasDetalleComponent implements OnInit {
     arrayColores.push(this.crearColorFormGroup());
   }
 
-  enviarFruta(op: number) {
-    console.trace('CrudFrutasDetalleComponent enviar');
+  enviarFruta(id: number) {
+    console.trace('CrudFrutasDetalleComponent enviar. Id: ' + id);
     const fruta = new Fruta();
     fruta.nombre =  this.formulario.controls.nombre.value;
     fruta.precio = this.formulario.controls.precio.value;
@@ -151,7 +151,8 @@ export class CrudFrutasDetalleComponent implements OnInit {
 
     console.debug('Llamar servicio pasando la fruta %o', fruta);
 
-    if (op === 1) {
+    /** Si es menor que 0 se esta creando una fruta nueva */
+    if (id < 0) {
       this.frutaService.add(fruta).subscribe(data => {
         console.debug(data);
         this.formulario.controls.nombre.setValue('');
@@ -163,7 +164,8 @@ export class CrudFrutasDetalleComponent implements OnInit {
         this.formulario.controls.imagen.setValue('');
         this.formulario.controls.colores.setValue([{color: ''}]);
       });
-    } else if (op === 2) {
+    /** Si id > 0 la fruta existe y se esta actualizando */
+    } else {
 
     }
   }
